@@ -10,5 +10,7 @@ This is a Vagrant Ansible control box because it's not supported on Windows
 
 ## TODO
 - Set up synced folder for ansible projects
+
+- Update docs with the shared stuff (vagrant 1.9.3 and vbox 5.1.18)
 - Work on ansible projects
 - Merge the two Vagrantfiles
