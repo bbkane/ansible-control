@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  gather_facts: false
   tasks:
     - name: Install Tools
       yum: name={{ item }} state=latest
@@ -12,3 +13,7 @@
         path: /etc/hosts
         regexp: '10.0.0.1 target1'
         line: '10.0.0.1 target1'
+    - name: Install .gitconfig
+      get_url:
+        url: https://raw.githubusercontent.com/bbkane/backup/master/common/.gitconfig
+        dest: /home/vagrant/.gitconfig
