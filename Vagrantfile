@@ -25,6 +25,11 @@ Vagrant.configure("2") do |config|
       yum -y install epel-release
       yum -y install ansible
     SHELL
+    ansible_control.vm.provision "file", source: "./ansible_control.yaml", destination: "/tmp/ansible_control.yaml"
+    ansible_control.vm.provision "shell", privileged: false, inline: "sudo mkdir -p /vagrant"
+    ansible_control.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "/tmp/ansible_control.yaml"
+    end
   end
 
   config.vm.define :target1 do |target1|

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install Tools
+      yum: name={{ item }} state=latest
+      with_items:
+        - git
+        - vim
+        
