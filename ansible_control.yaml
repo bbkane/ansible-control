@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: ansible-control
   become: true
   gather_facts: false
   tasks:

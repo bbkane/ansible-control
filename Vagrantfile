@@ -28,6 +28,9 @@ Vagrant.configure("2") do |config|
       # ansible-playbook run from here
       ansible.provisioning_path = "/home/vagrant/ansible_control"
       ansible.playbook = "ansible_control.yaml"
+      ansible.verbose = true
+      ansible.inventory_path = "hosts"
+      ansible.limit = "ansible-control"
     end
   end
 
