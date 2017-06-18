@@ -12,4 +12,3 @@
         path: /etc/hosts
         regexp: '10.0.0.1 target1'
         line: '10.0.0.1 target1'
-        
