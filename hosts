@@ -1,0 +1,5 @@
+[ansible-control]
+localhost ansible_connection=local
+
+[targets]
+target1

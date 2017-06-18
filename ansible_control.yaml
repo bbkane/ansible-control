@@ -17,3 +17,15 @@
       get_url:
         url: https://raw.githubusercontent.com/bbkane/backup/master/common/.gitconfig
         dest: /home/vagrant/.gitconfig
+    - name: Install Minimal Vimrc
+      get_url:
+        url: https://raw.githubusercontent.com/bbkane/nvim/master/init.vim
+        dest: /home/vagrant/.vimrc
+    - name: Make Vim Plugin Dir
+      file:
+        path: /home/vagrant/.vim/plugin
+        state: directory
+    - name: Install Vim-Commentary
+      get_url:
+        url: https://raw.githubusercontent.com/tpope/vim-commentary/master/plugin/commentary.vim
+        dest: /home/vagrant/.vim/plugin/commentary.vim
