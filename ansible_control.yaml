@@ -11,8 +11,8 @@
     - name: Add target1 to hosts
       lineinfile:
         path: /etc/hosts
-        regexp: '10.0.0.1 target1'
-        line: '10.0.0.1 target1'
+        regexp: '10.0.0.11 target1'
+        line: '10.0.0.11 target1'
     - name: Install .gitconfig
       get_url:
         url: https://raw.githubusercontent.com/bbkane/backup/master/common/.gitconfig
