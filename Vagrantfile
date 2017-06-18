@@ -14,14 +14,23 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network"
+  # config.vm.network "public_network"
 
-  config.vm.provision "shell", inline: <<-SHELL
-    yum -y update
-    # http://docs.ansible.com/ansible/intro_installation.html#latest-release-via-yum
-    yum -y install epel-release
-    yum -y install ansible
-  SHELL
+  config.vm.define :ansible_control, primary: true do |ansible_control|
+    ansible_control.vm.network :private_network, ip: "10.0.0.10"
+    ansible_control.vm.hostname = "ansible-control"
+    ansible_control.vm.provision "shell", inline: <<-SHELL
+      yum -y update
+      # http://docs.ansible.com/ansible/intro_installation.html#latest-release-via-yum
+      yum -y install epel-release
+      yum -y install ansible
+    SHELL
+  end
+
+  config.vm.define :target1 do |target1|
+    target1.vm.network :private_network, ip: "10.0.0.11"
+    target1.vm.hostname = "target1"
+  end
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
